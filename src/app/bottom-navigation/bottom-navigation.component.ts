@@ -1,10 +1,12 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-bottom-navigation',
   templateUrl: './bottom-navigation.component.html',
-  styleUrls : ['./bottom-navigation.component.scss']
+  styleUrls : ['./bottom-navigation.component.scss'],
+  imports: [RouterModule]
 })
 export class BottomNavigationComponent {
 
