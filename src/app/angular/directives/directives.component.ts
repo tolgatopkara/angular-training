@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   standalone: true,
   selector: 'app-directives',
-  template : ``
+  template : `<p>Angular Directives Works</p>`
 })
-export class DirectivesComponent {
+export default class DirectivesComponent {
 
 }

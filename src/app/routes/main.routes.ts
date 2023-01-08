@@ -10,25 +10,29 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+
   {
     path: 'home',
     loadComponent : () => import('../home/home.component')
   },
+
+
   {
     path : 'angular',
-    loadComponent : () => import('../angular/angular-welcome/angular-welcome.component')
+    loadChildren : () => import('./pages/angular.routes').then(m => m.routes)
   },
   {
     path : 'rxjs',
-    loadComponent : () => import('../rxjs/rxjs-welcome-page/rxjs-welcome-page.component')
+    loadChildren : () => import('./pages/rxjs.routes').then(m => m.routes)
   },
   {
     path : 'typescript',
-    loadComponent : () => import('../typescript/typescript-welcome-page/typescript-welcome-page.component')
+    loadChildren : () => import('./pages/typescript.routes').then(m => m.routes)
+
   },
   {
     path : 'ngrx',
-    loadComponent : () => import('../ngrx/ngrx-welcome-page/ngrx-welcome-page.component')
+    loadChildren : () => import('./pages/ngrx.routes').then(m => m.routes)
   }
 
 
