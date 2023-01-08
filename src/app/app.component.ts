@@ -1,20 +1,17 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "./header/header.component";
-import { EventBindingComponent } from "./angular/event-binding/event-binding.component";
-import { KeyboardEventsComponent } from "./angular/keyboard-events/keyboard-events.component";
-import { PropertyBindingComponent } from "./angular/property-binding/property-binding.component";
+import { BottomNavigationComponent } from "./bottom-navigation/bottom-navigation.component";
+import { BuiltInDirectivesComponent } from "./angular/directives/built-in-directives/built-in-directives.component";
 
 @Component({
     standalone: true,
     selector: 'app-root',
     template: `
     <app-header></app-header>
-    <!-- <app-property-binding></app-property-binding>
-      <app-event-binding></app-event-binding> -->
-     <app-keyboard-events></app-keyboard-events>
+     <app-bottom-navigation class="bottom-0 absolute w-full"></app-bottom-navigation>
 
      `,
-    imports: [ HeaderComponent,  EventBindingComponent, KeyboardEventsComponent, PropertyBindingComponent]
+    imports: [HeaderComponent, BottomNavigationComponent, BuiltInDirectivesComponent]
 })
 export class AppComponent {
   title = 'angular-training';

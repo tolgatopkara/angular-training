@@ -7,11 +7,11 @@ import { Component, ViewChild } from '@angular/core';
 
   selector: 'app-first-example',
   template: `
-  <p *ngIf="!isInput1Filled">Whats Your Name </p>
-  <p *ngIf="isInput1Filled">Welcome!! {{name}}!!</p>
+  <p *ngIf="!isInput1Empty">Whats Your Name </p>
+  <p *ngIf="isInput1Empty">Welcome!! {{name}}!!</p>
   <input #input1 id="input1" class="bg-red-400 m-4 text-black" placeholder="Placeholder" type="text" (keydown.enter)="onKeyPress($event.target, input2)">
-  <p *ngIf="!isInput2Filled"> Whats Your Surname </p>
-  <p *ngIf="isInput2Filled">your surname {{surname}}</p>
+  <p *ngIf="!isInput2Empty"> Whats Your Surname </p>
+  <p *ngIf="isInput2Empty">your surname {{surname}}</p>
 
   <input #input2 id="input2" class="bg-red-400 m-4 text-black" placeholder="Placeholder" type="text" (keydown.enter)="onKeyPress($event.target ,input1)">
 
@@ -19,8 +19,8 @@ import { Component, ViewChild } from '@angular/core';
   `
 })
 export class FirstExampleComponent {
-  isInput1Filled = false;
-  isInput2Filled = false;
+  isInput1Empty = false;
+  isInput2Empty = false;
   name = '';
   surname = '';
 
@@ -33,25 +33,15 @@ export class FirstExampleComponent {
   onKeyPress(event: any, nextInput: HTMLElement) {
     console.log(event.value);
 
-    if (event.id === 'input1') {
-      this.name = event.value;
-      if (this.name === '') {
-        this.isInput1Filled = false;
-      }
-      else
-      {
-        this.isInput1Filled = true;
-      }
-    }
-    else {
-      this.surname = event.value;
-      if (this.surname === '') {
-        this.isInput2Filled = false;
-      }
-      else
-      {
-        this.isInput2Filled = true;
-      }
+    switch (event.id) {
+      case 'input1':
+        this.name = event.value;
+        this.isInput1Empty = this.name !== '';  // if name is not empty then isInput1Filled is true
+        break;
+      case 'input2':
+        this.surname = event.value;
+        this.isInput2Empty = this.surname !== ''; // if surname is not empty then isInput2Filled is true
+        break;
     }
 
     nextInput.focus();
